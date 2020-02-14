@@ -33,3 +33,8 @@ function PrintBoard()
         done
 }
 
+function InitializePlayerPostion()
+{
+        currentposition=0
+        return $currentposition
+}
