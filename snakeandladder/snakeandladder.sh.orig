@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #!/bin/bash
 declare -A board[10,10]
 #set -x
@@ -63,7 +64,7 @@ function RollTheDie()
 }
 
 
-
+=======
 
 function CaseStatement()
 {
@@ -88,4 +89,4 @@ function CaseStatement()
 done
 }
 
-
+>>>>>>> useCase-3_{Case_statement}
