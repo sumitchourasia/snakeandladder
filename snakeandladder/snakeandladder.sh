@@ -1,13 +1,11 @@
-
 #!/bin/bash
 #set -x
 # sanke and ladder program implementation
 echo "welcome to snake and ladder game"
 
-value=100
 function InitializeBoard()
 {
-        local i=0;
+	value=100
         for ((i=0; i<10 ;i++ ))
         do
                 if [ "$(($i % 2))" -eq "0" ]
