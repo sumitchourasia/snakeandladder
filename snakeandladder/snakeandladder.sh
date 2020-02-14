@@ -4,14 +4,6 @@ declare -A board[10,10]
 # sanke and ladder program implementation
 echo "welcome to snake and ladder game"
 
-function GenerateRandom()
-{	
-	random=$(($RANDOM % 6))
-	random=$(($random + 1))
-	return $random
-}
-
-
 function PrintBoard()
 {
         for (( i=0;i<10;i++ ))
