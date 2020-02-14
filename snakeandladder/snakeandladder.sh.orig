@@ -1,5 +1,10 @@
 <<<<<<< HEAD
+#!/bin/bash
+#set -x
+# sanke and ladder program implementation
+echo "welcome to snake and ladder game"
 
 =======
 echo "checking"
+echo "skadg"
 >>>>>>> useCase-1_{IntializeBoard_and_Player_Position}
