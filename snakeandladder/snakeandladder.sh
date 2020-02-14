@@ -27,7 +27,6 @@ function InitializeBoard()
         done
 }
 
-
 function PrintBoard()
 {
         for (( i=0;i<10;i++ ))
@@ -54,3 +53,18 @@ function InitializePlayerPostion()
         currentposition=0
         return $currentposition
 }
+
+function GenerateRandom()
+{	
+	random=$(($RANDOM % 6))
+	random=$(($random + 1))
+	return $random
+}
+
+function RollTheDie()
+{
+	GenerateRandom
+	randomoutput=$?
+	return $randomoutput
+}
+
