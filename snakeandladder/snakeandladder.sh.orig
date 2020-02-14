@@ -1,9 +1,10 @@
+<<<<<<< HEAD
 #!/bin/bash
 declare -A board[10,10]
 #set -x
 # snake and ladder program implementation
 echo "welcome to snake and ladder game"
-
+=======
 
 function InitializeBoard()
 {
@@ -17,7 +18,7 @@ function InitializeBoard()
 		done
 	done
 }
-
+>>>>>>> useCase-1_{IntializeBoard_and_Player_Position}
 
 function PrintBoard()
 {
@@ -45,7 +46,7 @@ function InitializePlayerPostion()
         currentposition=0
         return $currentposition
 }
-
+<<<<<<< HEAD
 
 
 function GenerateRandom()
@@ -61,5 +62,5 @@ function RollTheDie()
         randomoutput=$?
         return $randomoutput
 }
-
-
+=======
+>>>>>>> useCase-1_{IntializeBoard_and_Player_Position}
