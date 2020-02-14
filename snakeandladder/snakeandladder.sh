@@ -1,5 +1,24 @@
-#!/bin/bash
-declare -A board[10,10]
-#set -x
-# sanke and ladder program implementation
-echo "welcome to snake and ladder game"
+
+function CaseStatement()
+{
+	i=0
+	while [ $i -lt 9 ]
+	do
+	GenerateRandom
+	option=$(( $random % 3 ))
+	case $option in 
+		0)
+			echo "do nothing"
+			;;
+		1)
+
+			echo "Ladder"
+			;;
+		2)
+			echo "snake"
+			;;
+	esac
+	i=$(($i + 1 ))
+done
+}
+
