@@ -4,7 +4,6 @@ declare -A board[10,10]
 # snake and ladder program implementation
 echo "welcome to snake and ladder game"
 
-
 function InitializeBoard()
 {
 	value=100
@@ -17,7 +16,6 @@ function InitializeBoard()
 		done
 	done
 }
-
 
 function PrintBoard()
 {
@@ -46,8 +44,6 @@ function InitializePlayerPostion()
         return $currentposition
 }
 
-
-
 function GenerateRandom()
 {
         random=$(($RANDOM % 6))
@@ -61,9 +57,6 @@ function RollTheDie()
         randomoutput=$?
         return $randomoutput
 }
-
-
-
 
 function CaseStatement()
 {
@@ -87,5 +80,4 @@ function CaseStatement()
 	i=$(($i + 1 ))
 done
 }
-
 
