@@ -217,3 +217,9 @@ function Snake()
 
 }
 
+InitializeBoard
+ PrintBoard
+ InitializePlayerPostion
+ CaseStatement
+
+
