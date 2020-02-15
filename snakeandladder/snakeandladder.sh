@@ -1,68 +1,3 @@
-#!/bin/bash
-declare -A board[10,10]
-#set -x
-# snake and ladder program implementation
-echo "welcome to snake and ladder game"
-
-function InitializeBoard()
-{
-        value=100
-        for (( i=9;i>=0;i-- ))
-        do
-                if [ "$(($i % 2 ))" -eq "0" ]
-                then
-                         for ((j=9;j>=0;j--))
-                         do
-                                board[$i,$j]="$value"
-                                value=$(( $value - 1 ))
-                         done
-                else
-                        for ((j=0;j<10;j++))
-                        do
-                                board[$i,$j]="$value"
-                                value=$(( $value - 1 ))
-                        done
-                fi
-                done
-}
-
-function PrintBoard()
-{
-        for (( i=9;i>=0;i-- ))
-        do
-                for(( j=0;j<10;j++ ))
-                do
-                        if [ "$i" -eq "0" ]
-                        then
-                                echo -e "  ${board[$i,$j]}   \c"
-                        else
-                                echo -e "  ${board[$i,$j]}  \c"
-                        fi
-                done
-                echo " "
-                echo " "
-        done
-}
-
-function InitializePlayerPostion()
-{
-        currentposition=0
-        return $currentposition
-}
-
-function GenerateRandom()
-{
-        random=$(($RANDOM % 6))
-        random=$(($random + 1))
-        return $random
-}
-
-function RollTheDie()
-{
-        GenerateRandom
-        randomoutput=$?
-        return $randomoutput
-}
 
 function CaseStatement()
 {
@@ -89,7 +24,6 @@ function CaseStatement()
                 k=$(($k + 1))
         done
 }
-
 
 function ladder()
 {
@@ -159,9 +93,4 @@ function PutPrevious()
         echo " pi and pj :  $pi , $pj"
         board[$pi,$pj]=$previousposition
 }
-
- InitializeBoard
- PrintBoard
- InitializePlayerPostion
- CaseStatement
 
