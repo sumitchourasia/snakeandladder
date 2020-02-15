@@ -65,17 +65,12 @@ function RollTheDie()
         return $randomoutput
 }
 
-function CaseStatement()
-{
-        k=0
-        while [ $k -lt 15 ]
 =======
-
+>>>>>>> useCase-5_{ensure_Player_gets_to_exact_100}
 function CaseStatement()
 {
 	times=0
         while [ $currentposition -lt 100 ]
->>>>>>> useCase-4_{Repeat_till_player_reaches_100}
         do
         GenerateRandom
         random=$?
@@ -91,7 +86,6 @@ function CaseStatement()
 	else
 		option=1
 	fi
-
 =======
 
         if [ "$option" -eq "0" ]
@@ -103,8 +97,8 @@ function CaseStatement()
         else
                 option=1
         fi
+>>>>>>> useCase-5_{ensure_Player_gets_to_exact_100}
 	times=$(( $times + 1 ))
->>>>>>> useCase-4_{Repeat_till_player_reaches_100}
         case $option in
                 0)
                         echo "do nothing"
@@ -124,8 +118,8 @@ function CaseStatement()
         esac
                 k=$(($k + 1))
         done
+	echo "total number of times is : $times "
 }
-
 
 function ladder()
 {
@@ -239,23 +233,15 @@ function Snake()
         PutPrevious
 
 }
-
-InitializeBoard
- PrintBoard
- InitializePlayerPostion
- CaseStatement
-
-
 =======
                         echo "snake"
                         Snake
                         PrintBoard
                         ;;
-
         esac
         done
 	echo "total number of times : $times"
 }
 
+>>>>>>> useCase-5_{ensure_Player_gets_to_exact_100}
 
->>>>>>> useCase-4_{Repeat_till_player_reaches_100}

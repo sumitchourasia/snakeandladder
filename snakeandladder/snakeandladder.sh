@@ -1,3 +1,4 @@
+
 #!/bin/bash
 declare -A board[10,10]
 #set -x
@@ -72,7 +73,7 @@ function CaseStatement()
         GenerateRandom
         random=$?
         option=$(($random % 11))
-	
+
 	if [ "$option" -eq "0" ]
 	then
 		option=0
@@ -82,6 +83,7 @@ function CaseStatement()
 	else
 		option=1
 	fi
+
 	times=$(( $times + 1 ))
         case $option in
                 0)
@@ -93,13 +95,13 @@ function CaseStatement()
                         PrintBoard
                         ;;
                 2)
+
 			echo "snake"
 			Snake
 			PrintBoard
                         ;;
 
         esac
-                k=$(($k + 1))
         done
 	echo "total number of times is : $times "
 }
@@ -216,4 +218,12 @@ function Snake()
         PutPrevious
 
 }
+
+InitializeBoard
+PrintBoard
+InitializePlayerPostion
+CaseStatement
+
+
+
 
