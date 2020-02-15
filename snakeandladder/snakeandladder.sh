@@ -6,18 +6,31 @@ function CaseStatement()
         do
         GenerateRandom
         random=$?
-        option=$(($random % 3))
+        option=$(($random % 11))
+	
+	if [ "$option" -eq "0" ]
+	then
+		option=0
+	elif [ "$(($option % 5))" -eq "0" ]
+	then
+		option=2
+	else
+		option=1
+	fi
+
         case $option in
-                1)
+                0)
                         echo "do nothing"
                         ;;
-                2)
+                1)
                         echo "ladder"
                         ladder
                         PrintBoard
                         ;;
-                3)
-                        echo "snake"
+                2)
+			echo "snake"
+			Snake
+			PrintBoard
                         ;;
 
         esac
@@ -31,9 +44,14 @@ function ladder()
         die=$?
         die=$(($die % 6))
         die=$(($die + 1))
+	if [ "$(($currentposition + $die ))" -gt "100" ]
+        then
+                echo "move is not allowed"
+                return 0
+        fi
 	previousposition=$currentposition
         currentposition=$(( $currentposition + $die ))
-        i=$(($currentposition / 10 ))
+	i=$(($currentposition / 10 ))
         j=$(($currentposition % 10 ))
 
         if [ "$j" -eq "0" ]
@@ -92,5 +110,46 @@ function PutPrevious()
         fi
         echo " pi and pj :  $pi , $pj"
         board[$pi,$pj]=$previousposition
+}
+
+
+function Snake()
+{
+	RollTheDie
+        die=$?
+        die=$(($die % 6))
+        die=$(($die + 1))
+	if [ "$(($currentposition - $die))" -lt "0" ] 
+	then
+		echo "move is not allowed"
+		return 0
+	fi
+        previousposition=$currentposition
+        currentposition=$(( $currentposition - $die ))
+        i=$(($currentposition / 10 ))
+        j=$(($currentposition % 10 ))
+
+        if [ "$j" -eq "0" ]
+        then
+                if [ "$(($i % 2))" -eq "0" ]
+                then
+                         i=$(( $i - 1))
+                else
+                         i=$(( $i - 1 ))
+                         j=9
+                fi
+        else
+                if [ "$(( $i % 2 ))" -eq "0" ]
+                then
+                j=$(( $j - 1 ))
+                else
+                        j=$(( 9 - $j + 1 ))
+                fi
+        fi
+        echo "currentpostion : $previousposition"
+        echo "new position  : $currentposition"
+        board[$i,$j]="p1"
+        PutPrevious
+
 }
 
