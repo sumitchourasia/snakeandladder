@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #!/bin/bash
 declare -A board[10,10]
 #set -x
@@ -68,10 +69,18 @@ function CaseStatement()
 {
         k=0
         while [ $k -lt 15 ]
+=======
+
+function CaseStatement()
+{
+	times=0
+        while [ $currentposition -lt 100 ]
+>>>>>>> useCase-4_{Repeat_till_player_reaches_100}
         do
         GenerateRandom
         random=$?
         option=$(($random % 11))
+<<<<<<< HEAD
 	
 	if [ "$option" -eq "0" ]
 	then
@@ -83,6 +92,19 @@ function CaseStatement()
 		option=1
 	fi
 
+=======
+
+        if [ "$option" -eq "0" ]
+        then
+                option=0
+        elif [ "$(($option % 5))" -eq "0" ]
+        then
+                option=2
+        else
+                option=1
+        fi
+	times=$(( $times + 1 ))
+>>>>>>> useCase-4_{Repeat_till_player_reaches_100}
         case $option in
                 0)
                         echo "do nothing"
@@ -93,6 +115,7 @@ function CaseStatement()
                         PrintBoard
                         ;;
                 2)
+<<<<<<< HEAD
 			echo "snake"
 			Snake
 			PrintBoard
@@ -110,16 +133,12 @@ function ladder()
         die=$?
         die=$(($die % 6))
         die=$(($die + 1))
-<<<<<<< HEAD
-        previousposition=$currentposition
-=======
 	if [ "$(($currentposition + $die ))" -gt "100" ]
         then
                 echo "move is not allowed"
                 return 0
         fi
 	previousposition=$currentposition
->>>>>>> useCase-3_{Case_statement}
         currentposition=$(( $currentposition + $die ))
 	i=$(($currentposition / 10 ))
         j=$(($currentposition % 10 ))
@@ -181,7 +200,6 @@ function PutPrevious()
         board[$pi,$pj]=$previousposition
 }
 
-
 function Snake()
 {
 	RollTheDie
@@ -222,3 +240,22 @@ function Snake()
 
 }
 
+InitializeBoard
+ PrintBoard
+ InitializePlayerPostion
+ CaseStatement
+
+
+=======
+                        echo "snake"
+                        Snake
+                        PrintBoard
+                        ;;
+
+        esac
+        done
+	echo "total number of times : $times"
+}
+
+
+>>>>>>> useCase-4_{Repeat_till_player_reaches_100}

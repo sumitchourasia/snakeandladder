@@ -66,8 +66,8 @@ function RollTheDie()
 
 function CaseStatement()
 {
-        k=0
-        while [ $k -lt 15 ]
+	times=0
+        while [ $currentposition -lt 100 ]
         do
         GenerateRandom
         random=$?
@@ -82,7 +82,7 @@ function CaseStatement()
 	else
 		option=1
 	fi
-
+	times=$(( $times + 1 ))
         case $option in
                 0)
                         echo "do nothing"
@@ -101,8 +101,8 @@ function CaseStatement()
         esac
                 k=$(($k + 1))
         done
+	echo "total number of times is : $times "
 }
-
 
 function ladder()
 {
@@ -216,10 +216,4 @@ function Snake()
         PutPrevious
 
 }
-
-InitializeBoard
- PrintBoard
- InitializePlayerPostion
- CaseStatement
-
 
