@@ -94,14 +94,8 @@ function CaseStatement()
                 1)
                         echo "ladder"
 			p1previousposition=$p1currentposition
-			echo "ladder , p1currentposition = $p1currentposition ,player = p1"
 			ladder $p1currentposition "p1" 
 			p1currentposition=$?
-			echo "p1previousposition : $p1previousposition"
-			echo "p1currentposition : $p1currentposition"
-			echo "p2previousposition : $p2previousposition"
-                        echo "p2currentposition : $p2currentposition"
-			echo "putlader player = p1 , p1previousposition = $p1previousposition "
 			PutPrevious "p1" $p1previousposition
                         PrintBoard
 				
@@ -109,25 +103,20 @@ function CaseStatement()
 			echo "ladder , p2currentposition = $p2currentposition ,player = p2"
 			ladder $p2currentposition "p2"
                         p2currentposition=$?
-			echo "p1previousposition : $p1previousposition"
-                        echo "p1currentposition : $p1currentposition"
-			echo "p2previousposition : $p2previousposition"
-                        echo "p2currentposition : $p2currentposition"
-			echo "putlader player = p2 , p1previousposition = $p2previousposition "
 			PutPrevious "p2" $p2previousposition
                         PrintBoard
+ 			echo "p1previousposition : $p1previousposition"
+                        echo "p1currentposition : $p1currentposition"
+                        echo "p2previousposition : $p2previousposition"
+                        echo "p2currentposition : $p2currentposition"
+                        echo "putlader player = p2 , p1previousposition = $p2previousposition "
+
                         ;;
                 2)
 			echo "snake"
                         p1previousposition=$p1currentposition
-                        echo "snake , p1currentposition = $p1currentposition ,player = p1"
                         Snake $p1currentposition "p1"
                         p1currentposition=$?
-                        echo "p1previousposition : $p1previousposition"
-                        echo "p1currentposition : $p1currentposition"
-                        echo "p2previousposition : $p2previousposition"
-                        echo "p2currentposition : $p2currentposition"
-                        echo "putlader player = p1 , p1previousposition = $p1previousposition "
                         PutPrevious "p1" $p1previousposition
                         PrintBoard
 
@@ -135,13 +124,14 @@ function CaseStatement()
                         echo "snake , p2currentposition = $p2currentposition ,player = p2"
                         Snake $p2currentposition "p2"
                         p2currentposition=$?
-                        echo "p1previousposition : $p1previousposition"
+                        PutPrevious "p2" $p2previousposition
+                        PrintBoard
+			 echo "p1previousposition : $p1previousposition"
                         echo "p1currentposition : $p1currentposition"
                         echo "p2previousposition : $p2previousposition"
                         echo "p2currentposition : $p2currentposition"
                         echo "putlader player = p2 , p1previousposition = $p2previousposition "
-                        PutPrevious "p2" $p2previousposition
-                        PrintBoard
+
                         ;;
         esac
         done
@@ -153,11 +143,9 @@ function CaseStatement()
 
 function ladder()
 {
-	echo "inside ladder"
 	currentposition=$1
 	player=$2
 	echo "player : $player"
-	echo "current position : $currentposition"
 	RollTheDie
         die=$?
         die=$(($die % 6))
@@ -189,18 +177,6 @@ function ladder()
                         j=$(( 9 - $j + 1 ))
                 fi
         fi
-	echo " i = $i and j = $j "
-	#echo "before if for player check"
-	#if [ "$player" == "p1" ]
-	#then
-	#	p1previousposition=$previousposition
-	#	echo " assigend value = p1previousposition : $p1previousposition"
-#
-#	else
-#		p2previousposition=$previousposition
-#		echo " assigend value =  p2previousposition : $p2previousposition "
-#
-#	fi
 
 	if [ "${board[$i,$j]}" == "p1" -a "$player" == "p2" ]
 	then
@@ -212,7 +188,6 @@ function ladder()
 	else
 		 board[$i,$j]=$player
 	fi
-        #PutPrevious $player $previousposition
 
 	return $currentposition
 }
@@ -227,7 +202,7 @@ function PutPrevious()
         fi
         pi=$(($previousposition / 10 ))
         pj=$(($previousposition % 10 ))
-        echo "previous position : $previousposition"
+        
         if [ "$pj" == "0" ]
         then
                 if [ "$pi" == "0" ]
@@ -249,9 +224,7 @@ function PutPrevious()
                         pj=$(( 9 - $pj + 1 ))
                 fi
         fi
-        echo " pi and pj :  $pi , $pj"
-	
-	if [ "${board[$pi,$pj]}" == "p1,p2" ] 
+        if [ "${board[$pi,$pj]}" == "p1,p2" ] 
 	then
 		if [ "$player" == "p1" ]
 		then
@@ -270,8 +243,7 @@ function Snake()
 	currentposition=$1
         player=$2
         echo "player : $player"
-        echo "current position : $currentposition"
-
+        
 	RollTheDie
         die=$?
         die=$(($die % 6))
@@ -304,7 +276,6 @@ function Snake()
                 fi
         fi
 	
-	echo "i = $i and j = $j"
 	if [ "${board[$i,$j]}" == "p1" -a "$player" == "p2" ]
         then
                 board[$i,$j]="p1,p2"
